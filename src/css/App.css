@@ -1,0 +1,98 @@
+.App {
+    box-sizing: border-box;
+    text-align: center;
+}
+/* main stuff  */
+.is-Flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.column {
+    flex-direction: column;
+}
+
+/* utility  */
+.Logo {
+    height: 100px;
+}
+.toggle {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.toggle div {
+    width: 35%;
+    height: 3px;
+    background-color: white;
+}
+.backdrop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+}
+/* navbar / sidedrawer  */
+.NavBar {
+    height: 7vh;
+}
+.NavBar .main {
+    width: 60%;
+    background-color: aquamarine;
+}
+.NavBar .side { 
+    width: 20%;
+    background-color: aqua;
+}
+.SideDrawer {
+    position: fixed;
+    width: 280px;
+    max-width: 70%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 200;
+    background-color: #fff;
+    padding: 32px 16px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.Open {
+    transform: translateX(0);
+}
+.Close {
+    transform: translateX(-100%);
+}
+
+/* ToDo stuff  */
+.ToDo {
+    width: 80%;
+    background-color: cornflowerblue;
+}
+.ToDo .ToDoList{
+    list-style: none;
+    width: 80%;
+    background-color: cornsilk;
+}
+.ToDo .ToDoList .ToDoItem{
+    width: 100%;
+}
+
+/* mobile*/
+@media(min-width: 500px) {
+    .SideDrawer {
+        width: 35%;
+    }
+}

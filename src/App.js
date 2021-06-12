@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import NavBar from './Components/Navigation/NavBar/NavBar';
+import SideDrawer from './Components/Navigation/SideDrawer/SideDrawer';
+import ToDo from './Components/ToDo/ToDo';
+
+import './css/App.css';
 
 function App() {
+  const [displaySideDrawer, setDisplaySideDrawer] = useState(false)
+
+  const sideDrawerToggledHandler = () => {
+    setDisplaySideDrawer(!displaySideDrawer)
+  }
+  const sideDrawerClosedHandler = () => {
+    setDisplaySideDrawer(false)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar sideDrawerToggled={sideDrawerToggledHandler} />
+      <SideDrawer 
+        open={displaySideDrawer} 
+        closed={sideDrawerClosedHandler} />
+        <main className="is-Flex">
+          <ToDo />
+        </main>
     </div>
   );
 }
