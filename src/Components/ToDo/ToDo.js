@@ -1,52 +1,46 @@
 import { useEffect, useState } from "react"
+import {MdLibraryAdd} from 'react-icons/md'
 
-import NewItem from "./NewItem"
+import Button from "../../UI/Button"
+import NewItemTextArea from "../../UI/NewItemTextArea"
 import ToDoList from "./ToDoList"
-import ToDoItem from "./ToDoItem"
+
 
 const ToDo = () => {
-    const newItemOnClickHandler = () => {
-        console.log('new item')
-        // open text area with save/cancel buttons
-    }
-    const itemOnClickHandler = () => {
-        console.log('item')
-        // expand focused item
-    }
-    const editOnClickHandler = () => {
-        console.log('edit')
-        // open item editor
-    }
-    const deleteOnClickHandler = () => {
-        console.log('delete')
-        // delete item
-    }
+    const [displayTextArea, setDisplayTextArea] = useState(false)
+    const [listItems, setListItems] = useState([])
 
-    useEffect(() => {
-        getToDoItems()
-    })
-
-    const getToDoItems = async() => {
-        const res = await fetch("https://api-nodejs-todolist.herokuapp.com/task")
-        const data = await res.json()
-        console.log(data)
+    const newItemOnClick = () => {
+        setDisplayTextArea(true)
     }
+    const newItemSaveOnClick = (e) => {
+        setListItems([...listItems, 
+                {
+                id: listItems.length,
+                title: e.target.parentElement.previousElementSibling.parentElement.children[0].value,
+                content: e.target.parentElement.previousElementSibling.value
+            }]
+        )
+        setDisplayTextArea(false)
 
-    const [toDoListItems, setToDoListItems] = useState([
-        <ToDoItem key="1" id="1" content="to do list item #1" itemOnClick={itemOnClickHandler} editOnClick={editOnClickHandler} deleteOnClick={deleteOnClickHandler} />,
-        <ToDoItem key="2" id="2" content="to do list item #2" itemOnClick={itemOnClickHandler} editOnClick={editOnClickHandler} deleteOnClick={deleteOnClickHandler} />,
-        <ToDoItem key="3" id="3" content="to do list item #3" itemOnClick={itemOnClickHandler} editOnClick={editOnClickHandler} deleteOnClick={deleteOnClickHandler} />,
-        <ToDoItem key="4" id="4" content="to do list item #4" itemOnClick={itemOnClickHandler} editOnClick={editOnClickHandler} deleteOnClick={deleteOnClickHandler} />
-    ])
-
+        e.target.parentElement.previousElementSibling.parentElement.children[0].value = ''
+        e.target.parentElement.previousElementSibling.value = ''
+    }
+    const newItemCancelOnClick = () => {
+        setDisplayTextArea(false)
+    }
+    const listItemDeleteOnClick = (e) => {
+    console.log('delete')
+    }
+    
+    const chevron = <MdLibraryAdd />
     return (
         <div className="ToDo is-Flex column">
-            <NewItem newItemOnClick={newItemOnClickHandler} />
-            <ToDoList listItems={toDoListItems} >
-                {toDoListItems}
-            </ToDoList>
+            {displayTextArea ? <NewItemTextArea newItemSave={newItemSaveOnClick} newItemCancel={newItemCancelOnClick} />
+            : <Button text="New List Item" className="NewItem" onClick={newItemOnClick} chevron={chevron} />
+            }
+            <ToDoList listItemsData={listItems} listItemDelete={listItemDeleteOnClick} />
         </div>
-
     )
 }
 

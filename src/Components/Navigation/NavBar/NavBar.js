@@ -6,7 +6,7 @@ const NavBar = ({sideDrawerToggled}) => {
     return (
         <div className="NavBar is-Flex">
         <Toggle toggled={sideDrawerToggled} />
-        <div className="NavBar main is-Flex" >TO DO LIST</div>
+        <div className="NavBar main is-Flex" >REACT TO-DO LIST</div>
         <div className="NavBar side is-Flex" >SIDE</div>
         
         </div>
