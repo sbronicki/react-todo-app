@@ -1,16 +1,17 @@
 import ToDoItem from "./ToDoItem"
 
 
-const ToDoList = ({listItemsData, listItemEdit, listItemDelete}) => (
+const ToDoList = ({listItems, itemEdit, itemDelete}) => (
     <ul className="ToDoList is-Flex column">
-        {listItemsData.length ? 
-            listItemsData.map(({id, title, content}) => (
+        {listItems.length ? 
+            listItems.map(({id, title, content}) => (
                 <ToDoItem 
                     key={id}
                     id={id} 
                     title={title}
                     content={content}
-                    deleteOnClick={listItemDelete}
+                    onEdit={itemEdit}
+                    onDelete={itemDelete}
                 />
             )) : <p className="big-P">Nothing to do!</p>
         }

@@ -1,11 +1,12 @@
-import React, {useState} from 'react'
-
+import React from 'react'
 import {HiChevronDoubleDown, HiChevronDoubleUp} from 'react-icons/hi'
+
+import { useToggle } from '../../Hooks/toggle-hook'
 
 import Button from "../../UI/Button"
 
-const ToDoItem = ({id, title, content, editOnClick, deleteOnClick}) => {
-    const [displayContent, setDisplayContent] = useState(false)
+const ToDoItem = ({id, title, content, onEdit, onDelete}) => {
+    const [displayContent, setDisplayContent] = useToggle(false)
     const itemOnClick = () => setDisplayContent(!displayContent)
 
     return (
@@ -22,8 +23,8 @@ const ToDoItem = ({id, title, content, editOnClick, deleteOnClick}) => {
             color="#fff" />}
         </div>
         <div className="ButtonContainer is-Flex">
-            <Button text="Edit" onClick={editOnClick} />
-            <Button text="Delete" onClick={deleteOnClick} />
+            <Button text="Edit" onClick={onEdit} />
+            <Button text="Delete" onClick={onDelete} />
         </div>
     </li>
 )}
