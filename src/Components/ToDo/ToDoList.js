@@ -1,7 +1,7 @@
 import ToDoItem from "./ToDoItem"
 
 
-const ToDoList = ({listItems, itemEdit, itemDelete}) => (
+const ToDoList = ({listItems, onDelete}) => (
     <ul className="ToDoList is-Flex column">
         {listItems.length ? 
             listItems.map(({id, title, content}) => (
@@ -10,8 +10,7 @@ const ToDoList = ({listItems, itemEdit, itemDelete}) => (
                     id={id} 
                     title={title}
                     content={content}
-                    onEdit={itemEdit}
-                    onDelete={itemDelete}
+                    onDelete={onDelete}
                 />
             )) : <p className="big-P">Nothing to do!</p>
         }

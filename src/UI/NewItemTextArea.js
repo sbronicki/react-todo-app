@@ -1,6 +1,6 @@
 import Button from "./Button"
 
-const NewItemTextArea = ({newItemSave, newItemCancel}) => (
+const NewItemTextArea = ({itemSave, itemCancel}) => (
     <div className="is-Flex column">
         <textarea
             placeholder="Title"
@@ -15,8 +15,8 @@ const NewItemTextArea = ({newItemSave, newItemCancel}) => (
             rows="3"
         />
         <div className="ButtonContainer is-Flex">
-            <Button text="Save" onClick={newItemSave} />
-            <Button text="Cancel" onClick={newItemCancel} />
+            <Button text="Save" onClick={itemSave} />
+            <Button text="Cancel" onClick={itemCancel} />
         </div>
     </div>
 )

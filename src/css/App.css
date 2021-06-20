@@ -15,7 +15,8 @@ main {
 }
 textarea {
     resize: none;
-    border: 2px solid black
+    border: 2px solid black;
+    outline: none;
  }
 .top{
     border-bottom: none;
@@ -158,9 +159,9 @@ textarea {
     color: #fff;
     cursor: pointer;
 }
-.ToDo .ToDoList .ToDoItem .ItemTitleWrapper:hover{
+/* .ToDo .ToDoList .ToDoItem .ItemTitleWrapper:hover{
     border-bottom: 2px solid #fff;
-}
+} */
 
 /* mobile*/
 @media(min-width: 500px) {
